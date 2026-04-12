@@ -9,5 +9,10 @@
     "**/__pycache__": true,
     "**/*.pyc": true,
     ".venv": true
-    }
+    },
+    "cSpell.words": [
+        "Carles",
+        "Conesa",
+        "Mañosa"
+    ]
 }
