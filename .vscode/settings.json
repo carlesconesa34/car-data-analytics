@@ -14,5 +14,7 @@
         "Carles",
         "Conesa",
         "Mañosa"
-    ]
+    ],
+    "python.terminal.useEnvFile": true,
+    "python.envFile": "${workspaceFolder}/.env"
 }
