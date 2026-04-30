@@ -59,14 +59,19 @@ The dataset contains **2,000 records** and **11 variables**:
 ```
 car-data-analytics/
 │
+├── .vscode/
+│
 ├── data/
 │   └── car_price_dataset.csv       # Raw dataset
+│ 
+├── mongodb/
+│   └── docker-compose.yml      # MongoDB docker compose
 │
 ├── src/
 │   └── eda.py                      # Exploratory Data Analysis script
 │
-├── dashboard/
-│   └── car_price_dashboard.pbix    # Power BI dashboard
+├── reports/
+│   └── car_price_dashboard.pbix    # Power BI dashboard in different formats
 │
 ├── .gitignore
 ├── LICENSE
@@ -82,6 +87,7 @@ car-data-analytics/
 
 - Python 3.8+
 - Power BI Desktop
+- Docker & Docker Compose
 
 ### Installation
 
@@ -133,6 +139,43 @@ The EDA script (`src/eda.py`) performs the following steps:
 - All categorical variables are well balanced across their categories
 - High price variability (€18,912 – €72,268) suggests meaningful differentiating factors
 - High mileage dispersion makes it relevant to analyze its relationship with price
+
+---
+
+## 🍃 MongoDB
+
+The dataset was imported into a MongoDB database for document-based visualization and querying purposes. MongoDB was used exclusively for dataset exploration and was not involved in data cleaning or preprocessing.
+
+The `mongodb/docker-compose.yml` file spins up three services:
+
+| Service | Description | Port |
+|---|---|---|
+| `mongo` | MongoDB database | `27017` |
+| `mongo-express` | Web-based MongoDB UI | `8081` |
+| `metabase` | Business intelligence tool | `3000` |
+
+### Start the services
+
+```bash
+cd mongodb
+docker-compose up -d
+```
+
+### View the database with Mongo Express
+
+Once the containers are running, open your browser and go to:
+
+http://localhost:8081
+
+Mongo Express will show all the databases and collections available in the MongoDB instance. From there you can browse the documents, run queries and explore the dataset in JSON format.
+
+### Stop the services
+
+```bash
+docker-compose down
+```
+
+> **Note:** The MongoDB data is persisted in a Docker volume (`mongo_data`), so your data will be kept even after stopping the containers.
 
 ---
 
